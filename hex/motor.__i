@@ -1,0 +1,1 @@
+"motor\motor.c" INCDIR(.\fireSensor;.\main;.\motor;.\trace) PRINT(.\motor.lst) OBJECT(.\hex\motor.obj)

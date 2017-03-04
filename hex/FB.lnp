@@ -1,0 +1,7 @@
+".\hex\STARTUP.obj",
+".\hex\main.obj",
+".\hex\motor.obj",
+".\hex\trace.obj",
+".\hex\firesensor.obj" 
+TO ".\hex\FB" 
+PRINT(".\FB.m51") RAMSIZE(256) 

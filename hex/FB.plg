@@ -1,0 +1,48 @@
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main\main.c(2): warning C318: can't open file 'motor.h'
+main\main.c(3): warning C318: can't open file 'trace.h'
+main\main.c(4): warning C318: can't open file 'firesensor.h'
+MAIN\MAIN.C(21): warning C206: 'initWheelMotor': missing function-prototype
+MAIN\MAIN.C(23): warning C206: 'initAngleMotor': missing function-prototype
+MAIN\MAIN.C(27): warning C206: 'checkFire': missing function-prototype
+MAIN\MAIN.C(31): warning C206: 'trace': missing function-prototype
+MAIN\MAIN.C(45): warning C206: 'wheelMotorInterrupt': missing function-prototype
+compiling motor.c...
+compiling trace.c...
+TRACE\TRACE.H(4): warning C318: can't open file 'motor.h'
+TRACE\TRACE.C(11): error C202: 'FORWARD': undefined identifier
+TRACE\TRACE.C(13): error C202: 'RIGHT': undefined identifier
+TRACE\TRACE.C(15): error C202: 'LEFT': undefined identifier
+TRACE\TRACE.C(20): error C202: 'CCW': undefined identifier
+TRACE\TRACE.C(22): error C202: 'CW': undefined identifier
+TRACE\TRACE.C(24): error C202: 'FORWARD': undefined identifier
+compiling firesensor.c...
+fireSensor\firesensor.c(3): warning C318: can't open file 'motor.h'
+FIRESENSOR\FIRESENSOR.C(36): error C202: 'STOP': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling trace.c...
+TRACE\TRACE.H(4): warning C318: can't open file 'motor.h'
+TRACE\TRACE.C(11): error C202: 'FORWARD': undefined identifier
+TRACE\TRACE.C(13): error C202: 'RIGHT': undefined identifier
+TRACE\TRACE.C(15): error C202: 'LEFT': undefined identifier
+TRACE\TRACE.C(20): error C202: 'CCW': undefined identifier
+TRACE\TRACE.C(22): error C202: 'CW': undefined identifier
+TRACE\TRACE.C(24): error C202: 'FORWARD': undefined identifier
+compiling firesensor.c...
+fireSensor\firesensor.c(3): warning C318: can't open file 'motor.h'
+FIRESENSOR\FIRESENSOR.C(36): error C202: 'STOP': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+compiling motor.c...
+compiling trace.c...
+compiling firesensor.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SHUTDOWNMOTOR?MOTOR
+Program Size: data=38.4 xdata=0 code=1284
+creating hex file from ".\hex\FB"...
+".\hex\FB" - 0 Error(s), 1 Warning(s).

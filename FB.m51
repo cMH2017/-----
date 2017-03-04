@@ -1,0 +1,114 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/04/2017  09:16:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_C51\C51\BIN\BL51.EXE .\hex\STARTUP.obj, .\hex\main.obj, .\hex\motor.obj, .\hex\trace.obj, .\hex\firesensor.obj T
+>> O .\hex\FB PRINT (.\FB.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\hex\STARTUP.obj (?C_STARTUP)
+  .\hex\main.obj (MAIN)
+  .\hex\motor.obj (MOTOR)
+  .\hex\trace.obj (TRACE)
+  .\hex\firesensor.obj (FIRESENSOR)
+  D:\KEIL_C51\C51\LIB\C51S.LIB (?C_INIT)
+  D:\KEIL_C51\C51\LIB\C51S.LIB (?C?SLDIV)
+  D:\KEIL_C51\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  .\hex\FB (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         ?DT?FIRESENSOR
+            DATA    0018H     0006H     UNIT         ?DT?MOTOR
+                    001EH     0002H                  *** GAP ***
+            BIT     0020H.0   0000H.3   UNIT         ?BI?MOTOR
+            BIT     0020H.3   0000H.1   UNIT         ?BI?MAIN
+                    0020H.4   0000H.4                *** GAP ***
+            DATA    0021H     0004H     UNIT         _DATA_GROUP_
+            DATA    0025H     0003H     UNIT         ?DT?MAIN
+            IDATA   0028H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     000DH     UNIT         ?PR?INITANGLEMOTOR?FIRESENSOR
+            CODE    001BH     0003H     ABSOLUTE     
+            CODE    001EH     00CEH     UNIT         ?C?LIB_CODE
+            CODE    00ECH     00C9H     UNIT         ?PR?_MOTORACTION?MOTOR
+            CODE    01B5H     00C7H     UNIT         ?PR?WHEELMOTORINTERRUPT?MOTOR
+            CODE    027CH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0308H     0058H     UNIT         ?PR?CHECKFIRE?FIRESENSOR
+            CODE    0360H     0044H     UNIT         ?C?LDIV
+            CODE    03A4H     0042H     UNIT         ?PR?TRACE?TRACE
+            CODE    03E6H     003FH     UNIT         ?PR?TIM1FORWHEEL?MAIN
+            CODE    0425H     003AH     UNIT         ?PR?MAIN?MAIN
+            CODE    045FH     0039H     UNIT         ?PR?TIM0FORANGLEMOTOR?MAIN
+            CODE    0498H     002BH     UNIT         ?C_INITSEG
+            CODE    04C3H     001EH     UNIT         ?PR?_DELAYMS?MAIN
+            CODE    04E1H     001AH     UNIT         ?PR?SHUTDOWNMOTOR?MOTOR
+            CODE    04FBH     0011H     UNIT         ?PR?INITWHEELMOTOR?MOTOR
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/04/2017  09:16:46  PAGE 2
+
+
+
+
+OVERLAY MAP OF MODULE:   .\hex\FB (?C_STARTUP)
+
+
+SEGMENT                                 DATA_GROUP 
+  +--> CALLED SEGMENT                 START    LENGTH
+-----------------------------------------------------
+?C_C51STARTUP                         -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                         -----    -----
+  +--> ?PR?INITWHEELMOTOR?MOTOR
+  +--> ?PR?_DELAYMS?MAIN
+  +--> ?PR?INITANGLEMOTOR?FIRESENSOR
+  +--> ?PR?CHECKFIRE?FIRESENSOR
+  +--> ?PR?TRACE?TRACE
+
+?PR?CHECKFIRE?FIRESENSOR              0021H    0004H
+  +--> ?PR?_MOTORACTION?MOTOR
+
+?PR?TRACE?TRACE                       -----    -----
+  +--> ?PR?_MOTORACTION?MOTOR
+
+*** NEW ROOT ***************************************************
+
+?PR?TIM1FORWHEEL?MAIN                 -----    -----
+  +--> ?PR?WHEELMOTORINTERRUPT?MOTOR
+
+
+
+SYMBOL TABLE OF MODULE:  .\hex\FB (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?SLDIV
+  C:0360H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:005AH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SHUTDOWNMOTOR?MOTOR
+
+Program Size: data=38.4 xdata=0 code=1284
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
