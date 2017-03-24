@@ -7,7 +7,6 @@ bit  pwmFlag=0;
 sbit beep=P2^3;
 sbit angleMotor=P1^2;
 sbit fan=P2^5;				//连接继电器的引脚，控制风扇
-//sbit IA=P2^5;
 uchar angleMotorCount=0;
 extern uint fireSensorAngle[5];
 extern char fireFlag;
@@ -19,18 +18,14 @@ void delayms(uint xms)
  	for(j=110;j>0;j--);
 }
 
-
-
-
-
-
 void main(void)		
 {
 	initWheelMotor();	 			//初始化轮子舵机
 	delayms(2);
-	initAngleMotor();
+	initAngleMotor();	 			//初始化角度舵机，控制风扇
+	fan=0;
 	delayms(20);	
-					//初始化角度舵机，控制风扇
+					
 	while(1)
 	{	
 		ET0=1;
@@ -43,7 +38,7 @@ void main(void)
 		}
 		else						//有火焰就灭火
 		{
-			delayms(800);			//防止误测
+			delayms(200);			//防止误测
 			if(fireFlag>0)
 			{	
 				if(fan==0)
