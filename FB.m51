@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        03/04/2017  09:16:46  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/23/2017  21:27:58  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -48,18 +48,19 @@ LINK MAP OF MODULE:  .\hex\FB (?C_STARTUP)
             CODE    00ECH     00C9H     UNIT         ?PR?_MOTORACTION?MOTOR
             CODE    01B5H     00C7H     UNIT         ?PR?WHEELMOTORINTERRUPT?MOTOR
             CODE    027CH     008CH     UNIT         ?C_C51STARTUP
-            CODE    0308H     0058H     UNIT         ?PR?CHECKFIRE?FIRESENSOR
-            CODE    0360H     0044H     UNIT         ?C?LDIV
-            CODE    03A4H     0042H     UNIT         ?PR?TRACE?TRACE
-            CODE    03E6H     003FH     UNIT         ?PR?TIM1FORWHEEL?MAIN
-            CODE    0425H     003AH     UNIT         ?PR?MAIN?MAIN
-            CODE    045FH     0039H     UNIT         ?PR?TIM0FORANGLEMOTOR?MAIN
-            CODE    0498H     002BH     UNIT         ?C_INITSEG
-            CODE    04C3H     001EH     UNIT         ?PR?_DELAYMS?MAIN
-            CODE    04E1H     001AH     UNIT         ?PR?SHUTDOWNMOTOR?MOTOR
-            CODE    04FBH     0011H     UNIT         ?PR?INITWHEELMOTOR?MOTOR
+            CODE    0308H     0058H     UNIT         ?PR?MAIN?MAIN
+            CODE    0360H     0058H     UNIT         ?PR?CHECKFIRE?FIRESENSOR
+            CODE    03B8H     0044H     UNIT         ?C?LDIV
+            CODE    03FCH     0042H     UNIT         ?PR?TRACE?TRACE
+            CODE    043EH     003FH     UNIT         ?PR?TIM1FORWHEEL?MAIN
+            CODE    047DH     0039H     UNIT         ?PR?TIM0FORANGLEMOTOR?MAIN
+            CODE    04B6H     002BH     UNIT         ?C_INITSEG
+            CODE    04E1H     0029H     UNIT         ?PR?MIEHUO?FIRESENSOR
+            CODE    050AH     001EH     UNIT         ?PR?_DELAYMS?MAIN
+            CODE    0528H     001AH     UNIT         ?PR?SHUTDOWNMOTOR?MOTOR
+            CODE    0542H     0011H     UNIT         ?PR?INITWHEELMOTOR?MOTOR
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/23/2017  21:27:58  PAGE 2
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      03/04/2017  09:16:46  PAGE 2
 
 
 
@@ -100,7 +101,7 @@ SYMBOL TABLE OF MODULE:  .\hex\FB (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C?SLDIV
-  C:0360H         PUBLIC        ?C?SLDIV
+  C:03B8H         PUBLIC        ?C?SLDIV
   -------         ENDMOD        ?C?SLDIV
 
   -------         MODULE        ?C?ULDIV
@@ -110,5 +111,8 @@ SYMBOL TABLE OF MODULE:  .\hex\FB (?C_STARTUP)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?SHUTDOWNMOTOR?MOTOR
 
-Program Size: data=38.4 xdata=0 code=1284
-LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MIEHUO?FIRESENSOR
+
+Program Size: data=38.4 xdata=0 code=1355
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

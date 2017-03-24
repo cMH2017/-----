@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   FIRESENSOR                                                            03/04/2017 09:16:44 PAGE 1   
+C51 COMPILER V9.01   FIRESENSOR                                                            03/23/2017 17:18:27 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE FIRESENSOR
@@ -21,50 +21,74 @@ line level    source
   11          sbit sersor3=P2^3;
   12          sbit sersor4=P2^4;
   13          
-  14          char fireFlag=-1;
-  15          
-  16          uint fireSensorAngle[]={14,12,10,8,6};     //数值方案暂定       2.25 9:35
-  17          
+  14          sbit fan=P2^5;                          //连接继电器的引脚，控制风扇
+  15          //sbit IA=P2^5;
+  16          
+  17          char fireFlag=-1;
   18          
-  19          extern int angle;                                                       //在main中定义
+  19          uint fireSensorAngle[]={15,13,11,9,7};
   20          
-  21          uint checkFire(void)    
-  22          {
-  23   1              static char fire[5];
-  24   1              char i;
-  25   1              uint angle;
-  26   1              char fs;
-  27   1              fs=fireSensor;
-  28   1              fs=~fs;                                                                 //有火焰是低电平，进行反转
-  29   1              for(i=0;i<5;i++)
-  30   1              {
-  31   2                      fire[i]=(char)((fs>>i)&0X01);
-  32   2                      if(fire[i])
-  33   2                      {
-  34   3                              angle=fireSensorAngle[i];
-  35   3                              fireFlag=i;                                             //用来设置角度舵机转动的角度
-  36   3                              motorAction(STOP,0);                    //小车轮子别动                  
-  37   3                              return angle;
-  38   3                      }
-  39   2              }
-  40   1              fireFlag=-1;
-  41   1              return fireSensorAngle[2];                              //如果没有火焰则风扇正对中间      
-  42   1      }
-  43          
-  44          void initAngleMotor(void)
-  45          {
-  46   1              TMOD&=0XF0;
-  47   1              TMOD|=0X01;                                                             //定时器0 16位定时器
-  48   1              TR0=1;
-  49   1              ET0=1;
-  50   1              EA=1;
-  51   1      }
+  21          
+  22          extern int angle;                                                       //在main中定义
+  23          
+  24          uint checkFire(void)    
+  25          {
+  26   1              static char fire[5];
+  27   1              char i;
+  28   1              uint angle;
+  29   1              char fs;
+  30   1              fs=fireSensor;
+  31   1              fs=~fs;                                                                 //有火焰是低电平，进行反转
+  32   1              for(i=0;i<5;i++)
+  33   1              {
+  34   2                      fire[i]=(char)((fs>>i)&0X01);
+  35   2                      if(fire[i])
+  36   2                      {
+  37   3                              angle=fireSensorAngle[i];
+  38   3                              fireFlag=1;                                             //用来设置角度舵机转动的角度
+  39   3                              motorAction(STOP,0);                    //小车轮子别动                  
+  40   3                              return angle;
+  41   3                      }
+  42   2              }
+  43   1              fireFlag=-1;
+  44   1              return fireSensorAngle[2];                              //如果没有火焰则风扇正对中间      
+  45   1      }
+  46          
+  47          void initAngleMotor(void)
+  48          {
+  49   1              TMOD&=0XF0;
+  50   1              TMOD|=0X01;                                                             //定时器0 16位定时器
+  51   1              TR0=1;
+  52   1              ET0=1;
+  53   1              EA=1;
+  54   1      }
+C51 COMPILER V9.01   FIRESENSOR                                                            03/23/2017 17:18:27 PAGE 2   
+
+  55          
+  56          void mieHuo()
+  57          {
+  58   1              int     i=0;
+  59   1              while(1)
+  60   1              {
+  61   2                 i++;
+  62   2                      if(i<15)
+  63   2                      {
+  64   3                              fan=0;
+  65   3      //                      IA=0;
+  66   3                      }
+  67   2                      else
+  68   2                      {
+  69   3                              fan=1;
+  70   3      //                  IA=0;
+  71   3                      }
+  72   2                      if(i>200)
+  73   2                              i=0;
+  74   2              }
+  75   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.01   FIRESENSOR                                                            03/04/2017 09:16:44 PAGE 2   
-
-   CODE SIZE        =    101    ----
+   CODE SIZE        =    142    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

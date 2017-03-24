@@ -5,5 +5,6 @@
 #define ANGLE_INIT 1046
 uint checkFire(void);
 void initAngleMotor(void);
-void initWheelMotor(void);
+void initWheelMotor(void);		 
+void mieHuo(void);
 #endif
